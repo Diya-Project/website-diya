@@ -16,7 +16,7 @@ function CardGraduate({ image, scroll, setScroll, name, job, text1, text2 }: Car
     return (
         <div className='border border-dashed border-spacing-x-px border-slate-800 bg-white shadow-xl flex md:flex-row flex-col md:w-[50vw] mx-auto rounded-lg'>
             <div className='my-auto md:w-[50%] h-[100%] flex justify-center items-center'>
-                <Image src={image} alt='' className='p-2 w-[90%]' />
+                <Image src={image} alt='' className='p-2 w-[90%] h-[90%]' />
             </div>
             <div className={`md:w-[50%] p-4 text-slate-100 bg-[#00274a] relative md:rounded-r-lg rounded-r-none md:rounded-b-none rounded-b-lg`}>
                 <h1 className={`text-xl font-semibold font-lato transition-all ease-in-out duration-300 ${scroll ? "text-transparent" : ""}`}>{name}</h1>

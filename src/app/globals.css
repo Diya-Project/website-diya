@@ -1,8 +1,21 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;900&family=Special+Elite&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Architects+Daughter&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;900&family=Special+Elite&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Architects+Daughter&display=swap');/* :root {
+
+.scrollbar-hide::-webkit-scrollbar {
+  width: 5px;
+}
+
+.scrollbar-hide::-webkit-scrollbar-track {
+  background: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar-thumb {
+  background-color: #00274a;
+}
+/* :root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;

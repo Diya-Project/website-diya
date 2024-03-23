@@ -1,32 +1,35 @@
 'use client'
-import moment from 'moment'
 import React, { useState } from 'react'
 import { HiOutlineChevronDown, HiOutlineChevronUp } from 'react-icons/hi2'
 import { Fade } from 'react-awesome-reveal'
-import Link from 'next/link'
 import "moment/locale/id"
+import { useGetEndTime, useGetStartTime, useGetWave } from '@/hooks/useDate'
+import { useGetNow } from '@/hooks/useDate'
+import CheckDateButton from '@/components/CheckDateButton'
 
 function AlurReguler() {
-    const [info, setInfo] = useState(false)
+    const [informasi, setInformasi] = useState(false)
     const [alur, setAlur] = useState(false)
     const [daftar, setDaftar] = useState(false)
-    const now = new Date()
-    const date = moment(now)
-    const batas = moment("2024-08-23")
-    const mulai = moment("2024-07-03")
-    const timeline = [
-        { size: info ? "md:h-[4rem] h-[100px]" : "md:h-[3rem] h-[50px]" },
-        { size: alur ? "md:h-[14rem] h-[390px]" : info ? "md:h-[10rem] h-[200px]" : "md:h-[9rem] h-[140px]" },
-        { size: daftar ? "md:h-[18rem] h-[500px]" : alur ? "md:h-[14rem] h-[40`0px]" : "md:h-[9rem] h-[165px]" },
 
+    const now = useGetNow()
+    const start = useGetStartTime()
+    const end = useGetEndTime()
+    const wave = useGetWave()
+
+    const timeline = [
+        { size: informasi ? "md:h-[4rem] h-[100px]" : "md:h-[3rem] h-[50px]" },
+        { size: alur ? "md:h-[11rem] h-[270px]" : informasi ? "md:h-[8rem] h-[170px]" : "md:h-[7rem] h-[115px]" },
+        { size: daftar ? "md:h-[18rem] h-[500px]" : alur ? "md:h-[10rem] h-[360px]" : "md:h-[8rem] h-[135px]" },
     ]
+
     const menuTimeline = [
         {
             func: () => {
                 setAlur(false)
                 setDaftar(false)
-                setInfo(!info)
-            }, title: "Lokasi", key: info, time: 2000, isi:
+                setInformasi(!informasi)
+            }, title: "Lokasi", key: informasi, time: 2000, isi:
                 <div>
                     <h3 className='font-sans'>Jl. Prof. M Yamin SH, Khusus Kota Selong, Kec. Selong, Kabupaten Lombok Timur, Nusa Tenggara Barat, Indonesia</h3>
                 </div>
@@ -34,7 +37,7 @@ function AlurReguler() {
         {
             func: () => {
                 setDaftar(false)
-                setInfo(false)
+                setInformasi(false)
                 setAlur(!alur)
             }, title: "Fase Belajar", key: alur, time: 2500, isi:
                 <div >
@@ -57,7 +60,7 @@ function AlurReguler() {
                         </div>
                         <div className='flex flex-col justify-center text-left'>
                             <h1>Total biaya</h1>
-                            <h1 className='mt-2'>Rp. 10.000.000,-</h1>
+                            <h1 className='mt-2'>Rp. 12.000.000,-</h1>
                         </div>
                     </div>
                     <div className='md:hidden flex flex-col'>
@@ -91,33 +94,33 @@ function AlurReguler() {
                         </div>
                         <div className='w-full h-[1px] bg-gray-800 my-2'></div>
                         <p>Total biaya </p>
-                        <p>Rp. 10.000.000,-</p>
+                        <p>Rp. 12.000.000,-</p>
                     </div>
-                    <p className='text-sm mt-3'>NB : Biaya dapat diangsur 2 kali, pembayaran pertama sebesar Rp. 5.000.000,- saat registrasi dan sisanya bisa dibayar pada semester berikutnya.</p>
+                    <div className='flex gap-1 mt-3 text-sm'>
+                        <p>NB</p>
+                        <p>:</p>
+                        <p>Biaya dapat diangsur sebanyak <b>3 kali</b>, pembayaran pertama periode <b>(April-September)</b> sebesar <b>Rp. 4.000.000,-</b> , pembayaran kedua periode <b>(November-Februari)</b> sebesar <b>Rp. 5.000.000,-</b> , pembayaran ketiga periode <b>(April-Agustus)</b> sebesar <b>Rp. 3.000.000,-</b> .</p>
+                    </div>
                 </div>
         },
         {
             func: () => {
-                setInfo(false)
+                setInformasi(false)
                 setAlur(false)
                 setDaftar(!daftar)
-            }, title: "Alur Pendaftaran Tahap 2", key: daftar, time: 3000, isi:
+            }, title: `Alur Pendaftaran Tahap ${wave}`, key: daftar, time: 3000, isi:
                 <div>
                     <div className='mb-2'>
                         <ul className='list-decimal mx-5 mb-5'>
                             <li>Mengisi formulir pendaftaran yang tersedia di web dengan lengkap, <b>PERHATIAN! Kuota terbatas hanya untuk 4 orang</b>, jika terpenuhi maka pendaftaran ditutup.</li>
-                            <li>Melakukan registrasi dengan membayar biaya awal sebesar Rp. 5.000.000,- ke rekening yang tertera .</li>
+                            <li>Melakukan registrasi dengan membayar biaya awal sebesar Rp. 6.000.000,- ke rekening yang tertera .</li>
                             <li>Konfirmasi bukti pembayaran ke nomor whatsapp panitia.</li>
                             <li>Peserta terdaftar dimasukkan ke grup whatsapp dan siap mengikuti tes pemetaan kemampuan.</li>
                             <li>Peserta yang tidak mengikuti tes pemetaan akan didiskualifikasi, biaya dikembalikan 100%.</li>
                             <li>Penandatanganan kontrak belajar.</li>
                         </ul>
                     </div>
-                    {date <= batas && date >= mulai ?
-                        <Link href={"/daftar"} className='bg-blueDiya text-white hover:bg-whiteDiya hover:text-[#00698f] border hover:border-[#00698f] px-10 py-2 mt-2 rounded-md transition-colors ease-in-out duration-300 md:w-52 w-full text-center'>Daftar Sekarang</Link>
-                        :
-                        <div className='bg-gray-400 text-white px-10 py-2 mt-2 rounded-md transition-colors ease-in-out duration-300 text-center'>Dibuka pada tanggal {mulai.format("DD MMMM YYYY")}</div>
-                    }
+                    <CheckDateButton now={now} start={start} end={end} />
                 </div>
         },
     ]

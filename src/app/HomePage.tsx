@@ -16,7 +16,7 @@ import Wave2 from '@/templates/Wave2'
 export default function HomePage() {
   return (
     <div className='overflow-x-hidden'>
-      <Image src={HomeImg} alt='' className='absolute w-[100vw] h-[120vh] -z-10 object-cover bg-fixed top-0' />
+      <Image loading='lazy'placeholder="blur" src={HomeImg} alt='' className='absolute w-[100vw] h-[120vh] -z-10 object-cover bg-fixed top-0' />
       <Home />
       <Privilage />
       <Wave2/>

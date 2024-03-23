@@ -1,15 +1,15 @@
-import React from 'react'
-import Slider  from "react-slick"
+import React, { ReactNode } from 'react'
+import Slider from "react-slick"
 import "slick-carousel/slick/slick.css"
 import "./slick.css"
 
 
-function Slide(props:any) {
+function Slide({ children }: { children: ReactNode }) {
     const settings = {
         dots: true,
         infinite: true,
-        autoplay : true,
-        autoplaySpeed : 5000,
+        autoplay: true,
+        autoplaySpeed: 5000,
         slidesToShow: 1,
         slidesToScroll: 1,
         dotsClass: "button__bar",
@@ -18,7 +18,7 @@ function Slide(props:any) {
     return (
         <div className='w-full h-full'>
             <Slider {...settings} className="mx-auto">
-                {props.children}
+                {children}
             </Slider>
         </div>
     )

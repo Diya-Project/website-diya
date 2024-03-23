@@ -8,7 +8,7 @@ function Footer() {
     return (
         <footer className='bg-[#00274a] w-screen h-full flex md:flex-row flex-col justify-between p-5 gap-10'>
             <div className=' w-full p-4 flex flex-col md:items-start items-center'>
-                <Image className='md:w-72 w-48' src={logo} alt="" />
+                <Image loading='lazy'placeholder="blur" className='md:w-72 w-48' src={logo} alt="" />
                 <div className='space-y-4 mt-10'>
                     <a href={`https://bootcamp.diyaproject.id`} className='flex space-x-3'>
                         <TfiWorld className='w-7 h-7 fill-white' />
@@ -29,7 +29,7 @@ function Footer() {
                 </div>
             </div>
             <div className='bg-white w-full'>
-                <iframe width="100%" height="100%" id="gmap_canvas" src="https://maps.google.com/maps?q=-8.656042,116.542317&t=&z=16&ie=UTF8&iwloc=&output=embed"></iframe>
+                <iframe loading='lazy' placeholder='empty' width="100%" height="100%" id="gmap_canvas" src="https://maps.google.com/maps?q=-8.656042,116.542317&t=&z=16&ie=UTF8&iwloc=&output=embed"></iframe>
             </div>
         </footer>
     )

@@ -34,9 +34,9 @@ export default function Header() {
         return () => window.addEventListener("scroll", move)
     }, [])
     return (
-        <div className={`fixed top-0 w-[100vw] py-3 md:pl-10 pl-4 md:pr-10 pr-5 flex flex-row-reverse justify-between gap-10 h-[10vh] z-10 transition-colors ease-in-out duration-300 ${scrolTo || path === "/reguler" || path === "/beasiswa" || path === "/register"  ? "bg-[#00274a]" : "bg-transparent"}`}>
+        <div className={`fixed top-0 w-[100vw] py-3 md:pl-10 pl-4 md:pr-10 pr-5 flex flex-row-reverse justify-between gap-10 h-[10vh] z-10 transition-colors ease-in-out duration-300 ${scrolTo || path === "/reguler" || path === "/beasiswa" || path === "/daftar"  ? "bg-[#00274a]" : "bg-transparent"}`}>
             <div className='flex gap-10 flex-row-reverse'>
-                <Image src={Logo} alt='' className='w-36 h-12 my-auto' />
+                <Image loading='lazy'placeholder="blur" src={Logo} alt='' className='w-36 h-12 my-auto' />
                 <div className='md:flex hidden gap-10 my-auto text-white text-lg font-semibold font-lato'>
                     <Link href={"/#1"} className='cursor-pointer'>Beranda</Link>
                     <Link href={"/#2"} className='cursor-pointer'>Tentang Kami</Link>
@@ -45,11 +45,11 @@ export default function Header() {
                 </div>
             </div>
             <div className='my-auto md:hidden block ' onClick={() => setShowMenu(!showMenu)}>
-                <Image src={bar} alt='' className='w-10' />
+                <Image loading='lazy'placeholder="blur" src={bar} alt='' className='w-10' />
             </div>
             <div className={`md:hidden block fixed top-0 bg-white z-10 h-screen w-[80vw] p-4 font-lato ${showMenu ? "left-0" : "-left-[100vw]"} transition-all ease-in-out duration-500`}>
                 <div className='flex gap-4'>
-                    <Image src={cross} alt='' className='w-8' onClick={() => setShowMenu(!showMenu)} />
+                    <Image loading='lazy'placeholder="blur" src={cross} alt='' className='w-8' onClick={() => setShowMenu(!showMenu)} />
                     <h1 className='my-auto text-lg'>Menu</h1>
                 </div>
                 <div className='my-5 text-lg flex flex-col gap-5'>

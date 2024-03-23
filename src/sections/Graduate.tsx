@@ -14,7 +14,7 @@ function Graduate() {
         <div id='3' className='p-8 md:-mt-[25vh]'>
             <div className='flex justify-end gap-8'>
                 <h1 className='text-4xl font-semibold text-blue-950 flex justify-end items-end py-3 uppercase font-lato'>Alumni</h1>
-                <Image src={Cap} alt='' className='md:w-[7%] w-[25%]' />
+                <Image loading='lazy'placeholder="blur" src={Cap} alt='' className='md:w-[7%] w-[25%]' />
             </div>
             <div className='w-[100%] md:h-[120%] flex justify-center md:gap-0 gap-10 items-center mt-10'>
                 <Slide>

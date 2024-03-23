@@ -12,7 +12,7 @@ export default function Question() {
   return (
     <div className='w-[100vw] bg-[#00274a] p-8'>
       <div className='flex'>
-        <Image src={Bubble} alt='' className='w-44' />
+        <Image loading='lazy'placeholder="blur" src={Bubble} alt='' className='w-44' />
         <h1 className='text-[2rem] font-semibold md:-ml-20 -ml-14 md:mt-12 mt-7 text-slate-100 font-lato uppercase'>Frequently Asked Question</h1>
       </div>
       <div className='my-10 md:px-10 text-slate-100 flex flex-col gap-8 h-[65%]'>

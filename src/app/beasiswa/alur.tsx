@@ -2,32 +2,34 @@
 import React, { useState } from 'react'
 import { HiOutlineChevronDown, HiOutlineChevronUp } from 'react-icons/hi2'
 import { Fade } from 'react-awesome-reveal'
-import moment from 'moment'
-import Link from 'next/link'
 import "moment/locale/id"
+import { useGetEndTime, useGetNow, useGetStartTime, useGetWave } from '@/hooks/useDate'
+import formatTime from '@/hooks/useFormatTime'
+import CheckDateButton from '@/components/CheckDateButton'
+
 
 function AlurBeasiswa() {
-    const [info, setInfo] = useState(false)
+    const [informasi, setInformasi] = useState(false)
     const [alur, setAlur] = useState(false)
     const [daftar, setDaftar] = useState(false)
-    const [showPen, setShowPen] = useState(false)
-    const now = new Date()
-    const date = moment(now)
-    const batas = moment("2024-08-23")
-    const mulai = moment("2024-07-03")
-    const timeline = [
-        { size: info ? "md:h-[4rem] h-[100px]" : "md:h-[3rem] h-[50px]" },
-        { size: alur ? "md:h-[11rem] h-[270px]" : info ? "md:h-[8rem] h-[170px]" : "md:h-[7rem] h-[115px]" },
-        { size: daftar ? "md:h-[18rem] h-[500px]" : alur ? "md:h-[10rem] h-[360px]" : "md:h-[8rem] h-[135px]" },
 
+    const now = useGetNow()
+    const start = useGetStartTime()
+    const end = useGetEndTime()
+    const wave = useGetWave()
+
+    const timeline = [
+        { size: informasi ? "md:h-[4rem] h-[100px]" : "md:h-[3rem] h-[50px]" },
+        { size: alur ? "md:h-[11rem] h-[270px]" : informasi ? "md:h-[8rem] h-[170px]" : "md:h-[7rem] h-[115px]" },
+        { size: daftar ? "md:h-[18rem] h-[500px]" : alur ? "md:h-[10rem] h-[360px]" : "md:h-[8rem] h-[135px]" },
     ]
     const menuTimeline = [
         {
             func: () => {
                 setAlur(false)
                 setDaftar(false)
-                setInfo(!info)
-            }, title: "Lokasi", key: info, time: 2000, isi:
+                setInformasi(!informasi)
+            }, title: "Lokasi", key: informasi, time: 2000, isi:
                 <div>
                     <h3 className='font-sans'>Jl. Prof. M Yamin SH, Khusus Kota Selong, Kec. Selong, Kabupaten Lombok Timur, Nusa Tenggara Barat, Indonesia</h3>
                 </div>
@@ -35,7 +37,7 @@ function AlurBeasiswa() {
         {
             func: () => {
                 setDaftar(false)
-                setInfo(false)
+                setInformasi(false)
                 setAlur(!alur)
             }, title: "Fase Belajar", key: alur, time: 2500, isi:
                 <div>
@@ -94,16 +96,16 @@ function AlurBeasiswa() {
         },
         {
             func: () => {
-                setInfo(false)
+                setInformasi(false)
                 setAlur(false)
                 setDaftar(!daftar)
-            }, title: "Alur Pendaftaran Tahap 2", key: daftar, time: 3000, isi:
+            }, title: `Alur Pendaftaran Tahap ${wave}`, key: daftar, time: 3000, isi:
                 <div>
                     <div className='mb-2'>
                         <ul className='list-decimal mx-5 mb-5'>
-                            <li>Mengisi formulir pendaftaran yang tersedia di web dengan lengkap <b>dari tanggal 9 Agustus 2023 sampai 23 Agustus 2023</b>.</li>
+                            <li>Mengisi formulir pendaftaran yang tersedia di web dengan lengkap <b>dari tanggal {formatTime(start)} sampai {formatTime(end)}</b>.</li>
                             <li>Mengisi formulir izin belajar dari orang tua yang tersedia di website (download dan ditandatangani oleh orang tua).</li>
-                            <li>Membawa semua berkas syarat pendaftaran ke kantor Diya untuk di verifikasi panitia <b>dari tanggal 9 Agustus 2023 sampai 23 Agustus 2023</b>.</li>
+                            <li>Membawa semua berkas syarat pendaftaran ke kantor Diya untuk di verifikasi panitia <b>dari tanggal {formatTime(start)} sampai {formatTime(end)}</b>.</li>
                             <li>Peserta yang telah terverifikasi akan dimasukkan ke grup whatsapp.</li>
                             <li>Peserta menunggu waktu tes.</li>
                             <li>Peserta melakukan tes.</li>
@@ -111,11 +113,7 @@ function AlurBeasiswa() {
                             <li>Penandatanganan kontrak belajar.</li>
                         </ul>
                     </div>
-                    {date <= batas && date >= mulai ?
-                        <Link href={"/daftar"} className='bg-blueDiya text-white hover:bg-whiteDiya hover:text-[#00698f] border hover:border-[#00698f] px-10 py-2 mt-2 rounded-md transition-colors ease-in-out duration-300 md:w-52 w-full text-center'>Daftar Sekarang</Link>
-                        :
-                        <div className='bg-gray-400 text-white px-10 py-2 mt-2 rounded-md transition-colors ease-in-out duration-300 text-center'>Dibuka pada tanggal {mulai.format("DD MMMM YYYY")}</div>
-                    }
+                    <CheckDateButton now={now} start={start} end={end} />
                 </div>
         },
     ]
@@ -134,7 +132,7 @@ function AlurBeasiswa() {
                             <li>Lulusan SMA/SMK sederajat.</li>
                             <li>Belum menikah.</li>
                             <li>Mendapat izin dari orang tua (dengan menandatangani surat izin orang tua).</li>
-                            <li>Tidak terikat kontrak/bekerja di mana pun.</li>
+                            <li>Wajib tinggal di bootcamp (asrama).</li>
                             <li>Tidak dalam masa kuliah atau sekolah di tempat lain.</li>
                             <li>Siap bekerja di perusahaan rekanan Diya.</li>
                             <li>Siap berkomitmen menyelesaikan pembelajaran sampai tuntas.</li>
@@ -142,7 +140,7 @@ function AlurBeasiswa() {
                             <li>Melampirkan foto KTP dan KK.</li>
                             <li>Melampirkan foto bersama orang tua/wali di depan rumah (sewaktu-waktu pihak management akan meninjau lokasi rumah jika dibutuhkan).</li>
                             <li>Siap menjalani pengabdian di Diya Project selama 6 bulan.</li>
-                            <li>Lulus masuk Diya Bootcamp.</li>
+                            <li>Lulus tes masuk Diya Bootcamp ( tes tulis dan tes IQ).</li>
                         </ul>
                     </div>
                 </div>

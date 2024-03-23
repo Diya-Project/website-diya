@@ -4,6 +4,7 @@ import './globals.css'
 import Header from '@/templates/Header'
 import Footer from '@/templates/Footer'
 import Wave2 from '@/templates/Wave2'
+import Provider from '@/provider/Provider'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -19,12 +20,14 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className='scroll-smooth overflow-x-hidden'>
+    <html lang="en" className='scroll-smooth overflow-x-hidden scrollbar-hide'>
       <body className={inter.className}>
-        <Header />
-        {children}
-        <Wave2/>
-        <Footer />
+        <Provider>
+          <Header />
+          {children}
+          <Wave2 />
+          <Footer />
+        </Provider>
       </body>
     </html>
   )
