@@ -1,22 +1,19 @@
 import Privilage from '@/sections/Privilage'
 import Home from '@/sections/Home'
 import Question from '@/sections/Question'
-import Space from '@/sections/Space'
-import Header from '@/templates/Header'
 import React from 'react'
 import Image from 'next/image'
 import HomeImg from '@/assets/images/home.jpg'
 import Wave from '@/templates/Wave'
 import Graduate from '@/sections/Graduate'
 import Registration from '@/sections/Registration'
-import Footer from '@/templates/Footer'
 import Gallery from '@/sections/Gallery'
 import Wave2 from '@/templates/Wave2'
 
 export default function HomePage() {
   return (
     <div className='overflow-x-hidden'>
-      <Image loading='lazy'placeholder="blur" src={HomeImg} alt='' className='absolute w-[100vw] h-[120vh] -z-10 object-cover bg-fixed top-0' />
+      <Image loading='eager'placeholder="blur" src={HomeImg} alt='background' className='absolute w-screen h-screen -z-10 object-cover' />
       <Home />
       <Privilage />
       <Wave2/>

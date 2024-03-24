@@ -30,7 +30,7 @@ export default function Home() {
         <div className='md:w-[50%] w-[100%] md:h-[100%] h-full relative md:mt-0 mt-5`'>
           <div className='h-[100%]'>
             <div className='w-[100%] h-[100%] flex justify-center items-center'>
-              <Flip triggerOnce duration={1500} className={`absolute md:w-[63.5%] w-[90%] top-[15%] md:h-[55%] h-[90%] md:mt-0 -mt-10 bg-white shadow-lg transition-all ease-in-out duration-100  ${!arrowVisi && !arrowMisi ? "h-[55%] text-[#00698f]" : "h-[0%] text-transparent"}`}>
+              <Flip triggerOnce duration={1500} className={`absolute md:w-[63.5%] w-[90%] top-[15%] md:h-[55%] h-[90%] md:mt-0 -mt-10 bg-white shadow-lg transition-all ease-in-out duration-100 rounded-lg  ${!arrowVisi && !arrowMisi ? "h-[55%] text-[#00698f]" : "h-[0%] text-transparent"}`}>
                 <div className='flex justify-center items-center h-[100%] flex-col md:text-4xl font-semibold font-lato'>
                   <h1>Selamat Datang</h1>
                   <h1>di</h1>
