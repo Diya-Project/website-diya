@@ -103,6 +103,7 @@ function AlurBeasiswa() {
                 <div>
                     <div className='mb-2'>
                         <ul className='list-decimal mx-5 mb-5'>
+                            <li>Membayar uang pendaftaran sebesar <b>Rp. 50.000,-</b></li>
                             <li>Mengisi formulir pendaftaran yang tersedia di web dengan lengkap <b>dari tanggal {formatTime(start)} sampai {formatTime(end)}</b>.</li>
                             <li>Mengisi formulir izin belajar dari orang tua yang tersedia di website (download dan ditandatangani oleh orang tua).</li>
                             <li>Membawa semua berkas syarat pendaftaran ke kantor Diya untuk di verifikasi panitia <b>dari tanggal {formatTime(start)} sampai {formatTime(end)}</b>.</li>

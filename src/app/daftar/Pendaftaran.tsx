@@ -57,10 +57,12 @@ export default function Pendaftaran() {
     )
   })
   const watchTanggalLahir = method.watch("pajar.tanggalLahir")
+  const watchProgram = method.watch('pajar.program')
   const reguler = useGetQuotaReguler()
   const umur = useCheckAge(watchTanggalLahir)
   const kirim = useSendRegister()
   const send = (e: FieldValues) => {
+    console.log(e)
     if (e.pajar.program === "beasiswa") {
       if (umur.data?.data.status) {
         setDataPajar(e)
@@ -84,14 +86,15 @@ export default function Pendaftaran() {
     setShowMsg(true)
     setShowSave(false)
   }
-  useResetGender(method, showMsg)
+  // useResetGender(method, showMsg)
+  console.log(watchProgram)
   return (
     <div>
       <DialogForm show={showMsg} toggle={setShowMsg} msg={msgUmur}>
         <div className={`${msgUmur !== "Umur tidak memenuhi syarat!" ? "block" : "hidden"}`}>
-          {method.getValues()?.pajar?.program === "beasiswa" && form ?
+          {watchProgram === 'beasiswa'?
             <button onClick={() => {
-              window.open("https://unduh.diyaproject.id/pdf/izinortu.pdf")
+              window.open("https://unduh.diyaproject.id/pdf/izinortu2024.pdf")
               router.push("/")
             }} type="button" className='bg-blueDiya text-white hover:bg-whiteDiya hover:text-[#00698f] border hover:border-[#00698f] w-full py-2 mt-2 rounded-md transition-colors ease-in-out duration-300'>Unduh formulir</button>
             :
@@ -119,7 +122,7 @@ export default function Pendaftaran() {
               method.setValue("pajar.program", "reguler")
             }} className={`border-2 rounded-lg p-3 w-[48%] shadow-lg cursor-pointer transition-colors ease-in-out duration-300 ${tchreguler ? "border-[#00698f] text-[#00698f] font-semibold" : "border-gray-300 text-gray-700"}`}>
               <h1>Bootcamp Reguler</h1>
-              <p className={`text-gray-400 text-sm ${tchreguler ? "block" : "hidden"}`}>Silahkan transfer biaya ke no rekening Bank NTB syariah 001.22.00821.10.8 atas nama Fatoni Ahmad </p>
+              <p className={`text-gray-400 text-sm ${tchreguler ? "block" : "hidden"}`}>Silahkan transfer biaya ke no rekening Bank BSI 7135963857 atas nama Lembaga Kursus Diya </p>
             </div>
           </div>
           <div className='my-3'>

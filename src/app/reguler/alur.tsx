@@ -112,8 +112,9 @@ function AlurReguler() {
                 <div>
                     <div className='mb-2'>
                         <ul className='list-decimal mx-5 mb-5'>
-                            <li>Mengisi formulir pendaftaran yang tersedia di web dengan lengkap, <b>PERHATIAN! Kuota terbatas hanya untuk 4 orang</b>, jika terpenuhi maka pendaftaran ditutup.</li>
-                            <li>Melakukan registrasi dengan membayar biaya awal sebesar Rp. 6.000.000,- ke rekening yang tertera .</li>
+                            <li>Membayar uang pendaftaran sebesar <b>Rp. 50.000,-</b></li>
+                            <li>Mengisi formulir pendaftaran yang tersedia di web dengan lengkap, <b>PERHATIAN! Kuota terbatas hanya untuk 12 orang</b>, jika terpenuhi maka pendaftaran ditutup.</li>
+                            <li>Melakukan registrasi dengan membayar biaya awal sebesar Rp. 4.000.000,- ke rekening yang tertera .</li>
                             <li>Konfirmasi bukti pembayaran ke nomor whatsapp panitia.</li>
                             <li>Peserta terdaftar dimasukkan ke grup whatsapp dan siap mengikuti tes pemetaan kemampuan.</li>
                             <li>Peserta yang tidak mengikuti tes pemetaan akan didiskualifikasi, biaya dikembalikan 100%.</li>
