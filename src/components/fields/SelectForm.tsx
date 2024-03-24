@@ -1,13 +1,13 @@
 'use client'
 import { Controller, UseFormReturn } from "react-hook-form"
-import Select from 'react-select';
+import Select, { ActionMeta, MultiValue, SingleValue } from 'react-select';
 import { FocusEventHandler, ReactNode } from "react";
-import { SelectAttributes } from "@/type";
+import { FormReturn, MethodName, SelectAttributes } from "@/type";
 
 type SelectFormAttributes = {
     instanceId: string;
-    method: UseFormReturn<any, any, undefined>;
-    methodName: string;
+    methodName: MethodName;
+    method: FormReturn;
     className?: string;
     title: string;
     defaultValue?: { value: string | number | boolean | undefined; label: string | number | boolean | undefined };
@@ -15,13 +15,13 @@ type SelectFormAttributes = {
     options: SelectAttributes[]
     isMulti?: boolean;
     blur?: FocusEventHandler<HTMLInputElement> | undefined;
-    change?: (e: any) => void;
+    change?: (newValue: MultiValue<{}> | SingleValue<{}>, actionMeta: ActionMeta<{}>) => void;
     disabled?: boolean;
     val?: { value: string | number | boolean | undefined; label: string | number | boolean | undefined }
 }
 
 function SelectForm
-    ({ method, methodName, options, title, val, className, defaultValue, disabled, isMulti, blur, change, placeholder, instanceId }: SelectFormAttributes):ReactNode {
+    ({ method, methodName, options, title, val, className, defaultValue, disabled, isMulti, blur, change, placeholder, instanceId }: SelectFormAttributes): ReactNode {
     const { error } = method.getFieldState(methodName)
     return (
         <div className={`w-full space-y-1 ${className}`}>
@@ -39,7 +39,7 @@ function SelectForm
                         instanceId={instanceId}
                         className={className}
                         styles={{
-                            control: (baseStyles, state: any) => ({
+                            control: (baseStyles) => ({
                                 ...baseStyles,
                                 borderRadius: "0px",
                                 paddingTop: "1px",
@@ -52,24 +52,12 @@ function SelectForm
                         options={options}
                         isMulti={isMulti}
                         onBlur={blur}
-                        onChange={(e: any) => {
-                            if (isMulti) {
-                                onChange(e.map((d: any) =>
-                                    d.value))
-                                if (onChange) {
-                                    onChange(e);
-                                }
-                            }
-                            else {
-                                onChange(e.value);
-                                if (change) {
-                                    change(e.value)
-                                }
-                            }
+                        onChange={(e: SingleValue<{}>) => {
+                            onChange(e);
                         }}
                         isDisabled={disabled}
                         ref={ref}
-                        value={change ? val : options?.find((o: any) => o.value === value) || {}}
+                        value={change ? val : options?.find((o: SelectAttributes) => o.value === value) || {}}
                     />
                 }}
             />

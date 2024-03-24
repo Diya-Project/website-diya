@@ -1,8 +1,13 @@
 import api from '@/app/api/http'
-import { useQuery } from '@tanstack/react-query'
-import React, { useEffect } from 'react'
+import { UseQueryResult, useQuery } from '@tanstack/react-query'
+import { AxiosResponse } from 'axios'
+import { useEffect } from 'react'
 
-export default function useCheckAge(date: string) {
+type UmurAttributes = {
+    status: boolean;
+}
+
+export default function useCheckAge(date: string): UseQueryResult<AxiosResponse<UmurAttributes>, Error> {
     const umur = useQuery({
         queryKey: ["get-umur"],
         queryFn: () => api.get(`/pajar/age/${date}`),

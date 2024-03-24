@@ -62,9 +62,9 @@ export default function Pendaftaran() {
   const kirim = useSendRegister()
   const send = (e: FieldValues) => {
     if (e.pajar.program === "beasiswa") {
-      if (umur.data?.data?.status) {
+      if (umur.data?.data.status) {
         setDataPajar(e)
-        kirim.mutate()
+        kirim.mutate(e)
         setMsgUmur("Pendaftaran Berhasil, silahkan unduh formulir izin belajar")
       }
       else {
@@ -74,7 +74,7 @@ export default function Pendaftaran() {
     else {
       if (reguler.data?.data?.open) {
         setDataPajar(e)
-        kirim.mutate()
+        kirim.mutate(e)
         setMsgUmur("Pendaftaran Berhasil")
       }
       else {

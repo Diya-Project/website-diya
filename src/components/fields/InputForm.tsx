@@ -1,6 +1,6 @@
 import { ReactNode } from "react";
-import { InputType } from "@/type";
-import { UseFormReturn } from "react-hook-form";
+import { FormReturn, InputType, MethodName, RegisterAttributes } from "@/type";
+import { FieldValues, UseFormReturn } from "react-hook-form";
 
 type InputFormAttributes = {
     id: string;
@@ -11,8 +11,8 @@ type InputFormAttributes = {
     className?: string;
     read?: boolean;
     icon?: ReactNode;
-    methodName: string;
-    method: UseFormReturn<any, any, undefined>;
+    methodName: MethodName;
+    method: FormReturn;
     whiteText?: boolean
 }
 function InputForm({ id, max, step, type, title, className, read, icon, method, methodName, whiteText }: InputFormAttributes): ReactNode {

@@ -1,10 +1,10 @@
+import { FormReturn, MethodName } from '@/type';
 import React, { ReactNode } from 'react'
-import { UseFormReturn } from 'react-hook-form';
 
 type TextAreaFormAttributes = {
     id: string;
-    method: UseFormReturn<any, any, undefined>;
-    methodName: string;
+    methodName: MethodName;
+    method: FormReturn;
     className?: string;
     title: string;
 }

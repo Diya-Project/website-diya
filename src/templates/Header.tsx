@@ -12,7 +12,7 @@ export default function Header() {
     const [scrolTo, setScrolTo] = useState(false)
     const [scroll, setScroll] = useState(0)
     const path = usePathname()
-    const refScroll = useRef<any>()
+    const refScroll = useRef<number>()
     refScroll.current = scroll
     useEffect(() => {
         const move = () => {

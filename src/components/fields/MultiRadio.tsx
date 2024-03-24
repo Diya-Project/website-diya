@@ -1,11 +1,11 @@
 import React, { ReactNode } from 'react'
 import RadioForm from './RadioForm'
-import { FieldValues, UseFormReturn } from 'react-hook-form';
+import { FormReturn, MethodName } from '@/type';
 
 type MultiRadioAttributes = {
     header: string
-    method: UseFormReturn<any, any>;
-    methodName: string;
+    method: FormReturn;
+    methodName: MethodName;
     value: Array<string>;
     title: Array<string>;
     children?: ReactNode;

@@ -1,12 +1,12 @@
 import { SelectAttributes } from '@/type';
 import { ReactNode } from 'react';
-import Select from 'react-select'
+import Select, { ActionMeta, SingleValue } from 'react-select'
 
 type SelectorAttributes = {
     title: string;
     options: Array<SelectAttributes>
     value: SelectAttributes
-    onChange: (e: any) => void;
+    onChange: (newValue: SingleValue<SelectAttributes>, actionMeta: ActionMeta<SelectAttributes>) => void;
     defaultValue?: SelectAttributes;
 }
 
@@ -17,7 +17,7 @@ function Selector({ title, onChange, options, value }: SelectorAttributes): Reac
             <h1 className="md:mx-0 text-md font-montserrat font-semibold text-gray-700">{title}</h1>
             <Select
                 styles={{
-                    control: (baseStyles: any) => ({
+                    control: (baseStyles) => ({
                         ...baseStyles,
                         borderRadius: "6px",
                         paddingTop: "1px",

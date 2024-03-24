@@ -1,9 +1,10 @@
+import { FormReturn, MethodName } from '@/type';
 import React, { ReactNode } from 'react'
 import { Controller, UseFormReturn } from 'react-hook-form'
 
 type RadioFormAttributes = {
-    method: UseFormReturn<any, any, undefined>;
-    methodName: string;
+    methodName: MethodName;
+    method: FormReturn;
     change?: (e: string | number) => void;
     id?: string | undefined;
     val?: string | number | undefined;
