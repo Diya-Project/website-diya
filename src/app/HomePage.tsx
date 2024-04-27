@@ -13,7 +13,7 @@ import Wave2 from '@/templates/Wave2'
 export default function HomePage() {
   return (
     <div className='overflow-x-hidden'>
-      <Image loading='eager'placeholder="blur" src={HomeImg} alt='background' className='absolute w-screen h-screen -z-10 object-cover' />
+      <Image loading='eager'placeholder="blur" src={HomeImg} alt='background/home/ayyasy/projects/diya-nextjs/src/app/favicon.ico' className='absolute w-screen h-screen -z-10 object-cover' />
       <Home />
       <Privilage />
       <Wave2/>

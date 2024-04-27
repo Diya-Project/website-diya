@@ -18,6 +18,7 @@ function AlurBeasiswa() {
     const end = useGetEndTime()
     const wave = useGetWave()
 
+
     const timeline = [
         { size: informasi ? "md:h-[4rem] h-[100px]" : "md:h-[3rem] h-[50px]" },
         { size: alur ? "md:h-[11rem] h-[270px]" : informasi ? "md:h-[8rem] h-[170px]" : "md:h-[7rem] h-[115px]" },
@@ -104,9 +105,9 @@ function AlurBeasiswa() {
                     <div className='mb-2'>
                         <ul className='list-decimal mx-5 mb-5'>
                             <li>Membayar uang pendaftaran sebesar <b>Rp. 50.000,-</b></li>
-                            <li>Mengisi formulir pendaftaran yang tersedia di web dengan lengkap <b>dari tanggal {formatTime(start)} sampai {formatTime(end)}</b>.</li>
+                            <li>Mengisi formulir pendaftaran yang tersedia di web dengan lengkap <b>dari tanggal {start ? formatTime(start) : "-"} sampai {end ? formatTime(end) : "-"}</b>.</li>
                             <li>Mengisi formulir izin belajar dari orang tua yang tersedia di website (download dan ditandatangani oleh orang tua).</li>
-                            <li>Membawa semua berkas syarat pendaftaran ke kantor Diya untuk di verifikasi panitia <b>dari tanggal {formatTime(start)} sampai {formatTime(end)}</b>.</li>
+                            <li>Membawa semua berkas syarat pendaftaran ke kantor Diya untuk di verifikasi panitia <b>dari tanggal {start ? formatTime(start) : "-"} sampai {end ? formatTime(end) : "-"}</b>.</li>
                             <li>Peserta yang telah terverifikasi akan dimasukkan ke grup whatsapp.</li>
                             <li>Peserta menunggu waktu tes.</li>
                             <li>Peserta melakukan tes.</li>
