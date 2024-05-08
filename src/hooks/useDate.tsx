@@ -2,7 +2,7 @@ import moment from "moment"
 
 const tanggalTes = [
     { start: '2024-03-25', end: '2024-04-30', test: '2024-04-28', result: '2024-05-05' },
-    // { start: '2024-04-30', end: '2024-05-15', test: '2024-05-28', result: '2024-06-05' },
+    { start: '2024-05-10', end: '2024-06-10', test: '', result: '' },
 ]
 
 const date = new Date()
