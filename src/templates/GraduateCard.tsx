@@ -3,7 +3,7 @@ import React from 'react'
 import { FaArrowRight } from 'react-icons/fa6'
 
 interface CardGraduateAttributes {
-    image: StaticImageData;
+    image: StaticImageData|string;
     scroll: boolean;
     setScroll: (e: boolean) => void;
     name: string;
@@ -14,24 +14,24 @@ interface CardGraduateAttributes {
 
 function CardGraduate({ image, scroll, setScroll, name, job, text1, text2 }: CardGraduateAttributes) {
     return (
-        <div className='border border-dashed border-spacing-x-px border-slate-800 bg-white shadow-xl flex md:flex-row flex-col md:w-[50vw] mx-auto rounded-lg'>
-            <div className='my-auto md:w-[50%] h-[100%] flex justify-center items-center'>
-                <Image src={image} alt='' className='p-2 w-[90%] h-[90%]' />
+        <div className='bg-white flex md:flex-row flex-col md:w-[55vw] mx-auto rounded-lg gap-2'>
+            <div className='my-auto md:w-[55%] flex justify-center items-center'>
+                <Image src={image} alt='' className='w-[100%] h-[100%] rounded-xl' width={'500'} height={'500'} />
             </div>
-            <div className={`md:w-[50%] p-4 text-slate-100 bg-[#00274a] relative md:rounded-r-lg rounded-r-none md:rounded-b-none rounded-b-lg`}>
-                <h1 className={`text-xl font-semibold font-lato transition-all ease-in-out duration-300 ${scroll ? "text-transparent" : ""}`}>{name}</h1>
-                <h1 className={`transition-all ease-in-out duration-300 md:text-lg font-lato text-sm ${scroll ? "text-transparent" : ""}`}>{job}</h1>
-                <div className={`w-[100%] md:mt-4 mt-1 md:text-lg text-sm transition-all ease-in-out duration-300 ${scroll ? "text-transparent" : ""}`}>
+            <div className={`md:w-[45%] p-4 border-2 border-dashed border-blue-950 relative rounded-xl md:h-auto h-[25rem] overflow-y-auto overflow-x-hidden flex flex-col justify-between`}>
+                <div>
+                <h1 className={`md:text-2xl text-lg w-full font-bold font-lato transition-all ease-in-out duration-300 bg-white text-slate-800 ${scroll ? "text-transparent" : ""}`}>{name}</h1>
+                <h1 className='h-[0.5px] w-[100%] bg-slate-400 my-2'></h1>
+                <h1 className={`ease-in-out duration-300 md:text-sm font-lato text-xs text-blue-500 ${scroll ? "text-transparent" : ""}`}>{job}</h1>
+                <h1 className='h-[0.5px] w-[100%] bg-slate-400 my-2'></h1>
+                </div>
+                <div className={`w-[100%] md:mt-4 mt-1 md:text-sm text-xs transition-all ease-in-out duration-300 md:py-0 py-2 space-y-5 ${scroll ? "text-transparent" : ""}`}>
+                    <p>
                     {text1}
-                    <h1 className='md:block hidden'>{text2}</h1>
-                </div>
-                <div className={`absolute right-0 top-0 md:hidden block  h-[100%] text-sm p-4 transition-all ease-in-out duration-300 ${scroll ? "w-[100%]" : "text-transparent"}`}>
+                    </p>
+                    <p>
                     {text2}
-                </div>
-                <div className='md:h-5 h-10 md:hidden block'>
-                    <div className={`absolute bottom-3  ${scroll ? "left-3" : "right-3"}`}>
-                        <FaArrowRight className={`w-7 h-7 cursor-pointer transition-all ease-in-out duration-300 ${scroll ? "rotate-180" : "rotate-0"}`} onClick={() => setScroll(!scroll)} />
-                    </div>
+                    </p>
                 </div>
             </div>
         </div>

@@ -9,6 +9,7 @@ import Graduate from '@/sections/Graduate'
 import Registration from '@/sections/Registration'
 import Gallery from '@/sections/Gallery'
 import Wave2 from '@/templates/Wave2'
+import Companies from '@/sections/Companies'
 
 export default function HomePage() {
   return (
@@ -20,6 +21,7 @@ export default function HomePage() {
       <Question />
       <Wave />
       <Graduate />
+      <Companies/>
       <Registration />
       <Gallery />
     </div>
